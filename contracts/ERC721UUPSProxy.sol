@@ -10,12 +10,9 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 contract MyERC721 is Initializable, UUPSUpgradeable,  ERC721Upgradeable, ERC721URIStorageUpgradeable, OwnableUpgradeable{
     uint256 private _tokenIdCounter;
     mapping (string => bool) private _tokenURIs;
-    
-    constructor() {
-    }
 
     function initialize() initializer public {
-        __ERC721_init("Panda", "PND");
+        __ERC721_init("MyToken", "MTK");
         __ERC721URIStorage_init();
         __Ownable_init(msg.sender);
         __UUPSUpgradeable_init();
@@ -40,4 +37,12 @@ contract MyERC721 is Initializable, UUPSUpgradeable,  ERC721Upgradeable, ERC721U
     }
 
     function _authorizeUpgrade(address newImplementation) internal onlyOwner override{}
+
+    receive() external payable {}
+
+    fallback() external payable {}
+
+    function tets1() public pure returns (string memory) {
+        return "Test1";
+    }
 }
