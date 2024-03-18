@@ -12,7 +12,6 @@ contract MyERC721 is Initializable, UUPSUpgradeable,  ERC721Upgradeable, ERC721U
     mapping (string => bool) private _tokenURIs;
     
     constructor() {
-        _disableInitializers();
     }
 
     function initialize() initializer public {
